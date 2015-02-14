@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  div.table-responsive
+    table.table.table-hover
+        thead
+            tr
+                th #
+                th Tipo de Producto
+                th Producto
+                th Unidad
+                th Precio x unidad
+        tbody
+            if(productos.length>0)                   
+                each producto in productos
+                    tr
+                        td #{producto.id}
+                        td #{producto.tipoProducto}
+                        td #{producto.nombreProducto}
+                        td #{producto.presentacionProducto}
+                        td #{producto.preciomercasaProducto}
+            else
+                label NO HAY PRODUCTOS QUE MOSTRAR
