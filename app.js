@@ -11,7 +11,7 @@ var DATABASE = require('./custom_modules/database');
 
 var app = express();
 //interaction DATABASE
-//var BD = new DATABASE();
+var BD = new DATABASE();
 //BD.createDataBase();
 //BD.createTables();
 //BD.getAllProducts(function(res){
