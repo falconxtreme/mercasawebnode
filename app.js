@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
+var product = require('./routes/product');
 var users = require('./routes/users');
 var DATABASE = require('./custom_modules/database');
 
@@ -31,7 +32,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
+app.use('/product', product);
 app.use('/users', users);
+app.post('/product', product);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

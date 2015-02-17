@@ -1,0 +1,46 @@
+block content
+  h1 Nuevo Producto
+  form(method='post', action='/product')
+    fieldset
+        legend Añadir un producto
+        div.clearfix
+            label Código interno
+            div.input
+                input(name='codigointerno', class='xlarge')
+            label Código de barra
+            div.input
+                input(name='codigobarra', class='xlarge')
+            label Tipo
+            div.input
+                input(name='tipo', class='xlarge')
+            label Nombre
+            div.input
+                input(name='nombre', class='xlarge')
+            label Marca
+            div.input
+                input(name='marca', class='xlarge')
+            label Presentacion
+            div.input
+                input(name='presentacion', class='xlarge')
+            label Precio por menor
+            div.input
+                input(name='preciopormenor', class='xlarge')
+            label Precio por mayor
+            div.input
+                input(name='preciopormayor', class='xlarge')
+            label Precio plaza vea
+            div.input
+                input(name='precioplazavea', class='xlarge')
+            label Precio wong
+            div.input
+                input(name='preciowong', class='xlarge')
+            label Precio mercasa
+            div.input
+                input(name='preciomercasa', class='xlarge')
+            label Margen mercasa
+            div.input
+                input(name='margenmercasa', class='xlarge')
+
+        div.actions
+            input(type='submit', value='Guardar', class='btn primary')
+            button(type='reset', class='btn') Cancelar

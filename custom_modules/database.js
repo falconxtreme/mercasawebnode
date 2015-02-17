@@ -2,6 +2,7 @@
 var mysql = require('mysql');
 var queriesInicioBD = require('./crearbdinicial');
 var queriesLeerTablas = require('./leerTablas');
+var queriesInsertarTablas = require('./insertarTablas');
 
 // run query to db
 var dbConfig = {
@@ -106,6 +107,14 @@ DB.prototype.createTables = function(){
 DB.prototype.getAllProducts = function(callback){
    var Query = queriesLeerTablas.SQLREAD_ALLPRODUCTS;
    runQueryWithoutData(Query,function(res){
+      //res = res.pop();
+      callback(res);
+   });
+}
+
+DB.prototype.insertProduct = function(data, callback){
+   var Query = queriesInsertarTablas.SQLINSERTPRODUCT;
+   runQueryWithData(Query, data, function(res){
       //res = res.pop();
       callback(res);
    });
