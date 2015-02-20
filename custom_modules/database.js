@@ -87,6 +87,27 @@ var runQueryWithData = function(Query,Data,callback){
         connection.end();
 }
 
+var runQueryWithManyProducts = function (Query, Productos, callback) {
+    var connection = mysql.createConnection(dbConfigWithBD);
+    connection.connect(function (err) {
+        if (err) throw err;
+    });
+    var count = 0;
+    for (obeProducto in Productos) {
+        connection.query(Query, [Productos[count].codigointerno, Productos[count].codigobarra, Productos[count].tipo,
+            Productos[count].nombre, Productos[count].marca, Productos[count].presentacion, Productos[count].preciopormenor, Productos[count].preciopormayor,
+            Productos[count].precioplazavea, Productos[count].preciowong, Productos[count].preciomercasa, Productos[count].margenmercasa], function (err, res) {
+                if (err) throw err;
+                if (callback) {
+                    callback(res);
+                }
+            }
+        );
+        count++;
+    }
+    connection.end();
+}
+
 
 
 // module
@@ -115,6 +136,14 @@ DB.prototype.getAllProducts = function(callback){
 DB.prototype.insertProduct = function(data, callback){
    var Query = queriesInsertarTablas.SQLINSERTPRODUCT;
    runQueryWithData(Query, data, function(res){
+      //res = res.pop();
+      callback(res);
+   });
+}
+
+DB.prototype.insertAllProducts = function(Productos, callback){
+   var Query = queriesInsertarTablas.SQLINSERTPRODUCT;
+   runQueryWithManyProducts(Query, Productos, function(res){
       //res = res.pop();
       callback(res);
    });

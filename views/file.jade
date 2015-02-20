@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1 Subir Archivo
+  form(method='post', action='/file', enctype='multipart/form-data')
+    fieldset
+        legend Añadir un archivo
+        div.clearfix
+            label Archivo
+            div.input
+                input(type='file', name='userfile', class='xlarge')            
+
+        div.actions
+            input(type='submit', value='Subir Información a BD', class='btn primary')
+            button(type='reset', class='btn') Cancelar
+
+        if(rptasubida!=null && rptasubida!=undefined)
+            if(rptasubida=='1')
+                label Se procesó correctamente el archivo
+            if(rptasubida=='-1')
+                label No se procesó correctamente el archivo

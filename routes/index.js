@@ -13,10 +13,9 @@ BD.getAllProducts(function(productosBD){
 
 router.get('/', function(req, res, next) {
     BD.getAllProducts(function(productosBD){
-       console.log(productosBD);
+       //console.log(productosBD);
        res.render('index', { title: 'MERCASA', productos: productosBD});
     });
-  
 });
 
 /* GET home page. 

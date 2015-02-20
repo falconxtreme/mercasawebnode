@@ -2,7 +2,7 @@ var SQLCREATEDATABASE = "CREATE DATABASE MercasaTest ";
 exports.SQLCREATEDATABASE = SQLCREATEDATABASE;
 
 
-var SQLCREATETABLAS = ' CREATE TABLE producto '+
+var SQLCREATETABLAS = ' CREATE TABLE producto ' +
     ' (id int(11) AUTO_INCREMENT, ' +
     ' codigointernoProducto varchar(30), ' +
     ' codigobarraProducto varchar(30), ' +

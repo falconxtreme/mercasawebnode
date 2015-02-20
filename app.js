@@ -9,10 +9,13 @@ var routes = require('./routes/index');
 var product = require('./routes/product');
 var users = require('./routes/users');
 var DATABASE = require('./custom_modules/database');
+var file = require('./routes/file');
+
+var formidable = require('formidable');
 
 var app = express();
 //interaction DATABASE
-var BD = new DATABASE();
+//var BD = new DATABASE();
 //BD.createDataBase();
 //BD.createTables();
 //BD.getAllProducts(function(res){
@@ -34,7 +37,29 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/product', product);
 app.use('/users', users);
+app.use('/file', file);
+app.use('/file/product', file);
+
 app.post('/product', product);
+app.post('/file', file);
+/*
+app.post('/file', function (req, res, next) {
+    var incoming = new formidable.IncomingForm();
+    incoming.uploadDir = 'uploads';
+    incoming.on('fileBegin', function (field, file) {
+        if (file.name) {
+            file.path += "-" + file.name;
+            console.log("ARCHIVO A SUBIR: " + file.path);
+        }
+    }).on('file', function (field, file) {
+        if (!file.size) { return; }
+        console.log(file.name + " recibido")
+    }).on('end', function () {
+        res.render('file', { title: 'MERCASA', rptasubida: '1' });
+    });
+    incoming.parse(req);
+});
+*/
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
