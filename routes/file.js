@@ -67,7 +67,7 @@ router.post('/', function (req, res, next) {
     incoming.uploadDir = 'uploads';
     incoming.on('fileBegin', function (field, file) {
         if (file.name) {
-            file.path = 'uploads\\' + file.name;
+            file.path = 'uploads/' + file.name;
             filename=file.name;
             console.log("ARCHIVO A SUBIR: " + file.path);
         }
